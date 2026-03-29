@@ -1,0 +1,8 @@
+# Customer Success FTE - Kubernetes Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: customer-success
+  labels:
+    name: customer-success
+    app.kubernetes.io/name: customer-success-fte

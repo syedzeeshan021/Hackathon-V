@@ -1,0 +1,240 @@
+{
+  "sample_tickets": [
+    {
+      "id": 1,
+      "channel": "email",
+      "customer_email": "john@example.com",
+      "subject": "How do I reset my password?",
+      "content": "Hi, I forgot my password and can't log in. How do I reset it?",
+      "expected_action": "guide_password_reset",
+      "escalate": false,
+      "category": "technical"
+    },
+    {
+      "id": 2,
+      "channel": "whatsapp",
+      "customer_phone": "+1234567890",
+      "content": "API not working. Getting 401 error.",
+      "expected_action": "help_authentication",
+      "escalate": false,
+      "category": "technical"
+    },
+    {
+      "id": 3,
+      "channel": "email",
+      "customer_email": "sarah@company.com",
+      "subject": "Pricing for Enterprise plan",
+      "content": "We're interested in the Enterprise plan for our team of 50 developers. What's the pricing?",
+      "expected_action": "escalate_pricing",
+      "escalate": true,
+      "escalation_reason": "pricing_inquiry",
+      "category": "billing"
+    },
+    {
+      "id": 4,
+      "channel": "web_form",
+      "customer_email": "dev@startup.io",
+      "subject": "Feature request: Bulk API calls",
+      "content": "Would love to see a bulk API endpoint for batch operations. Is this on the roadmap?",
+      "expected_action": "escalate_feature_request",
+      "escalate": true,
+      "escalation_reason": "feature_request",
+      "category": "feedback"
+    },
+    {
+      "id": 5,
+      "channel": "whatsapp",
+      "customer_phone": "+9876543210",
+      "content": "This is ridiculous! Your API has been down for 2 hours!",
+      "expected_action": "empathy_and_escalate",
+      "escalate": true,
+      "escalation_reason": "negative_sentiment",
+      "category": "technical",
+      "sentiment_score": 0.1
+    },
+    {
+      "id": 6,
+      "channel": "email",
+      "customer_email": "admin@techcorp.com",
+      "subject": "How to set up rate limiting?",
+      "content": "I want to set up rate limiting for my API. What are the steps?",
+      "expected_action": "provide_documentation",
+      "escalate": false,
+      "category": "technical"
+    },
+    {
+      "id": 7,
+      "channel": "web_form",
+      "customer_email": "newuser@gmail.com",
+      "subject": "Getting started question",
+      "content": "Just signed up! Where do I find my API keys?",
+      "expected_action": "guide_getting_started",
+      "escalate": false,
+      "category": "general"
+    },
+    {
+      "id": 8,
+      "channel": "email",
+      "customer_email": "billing@company.com",
+      "subject": "Refund request",
+      "content": "We accidentally subscribed to the wrong plan. Can we get a refund?",
+      "expected_action": "escalate_refund",
+      "escalate": true,
+      "escalation_reason": "refund_request",
+      "category": "billing"
+    },
+    {
+      "id": 9,
+      "channel": "whatsapp",
+      "customer_phone": "+1122334455",
+      "content": "human",
+      "expected_action": "escalate_human_request",
+      "escalate": true,
+      "escalation_reason": "human_request",
+      "category": "general"
+    },
+    {
+      "id": 10,
+      "channel": "email",
+      "customer_email": "legal@company.com",
+      "subject": "Legal question about data processing",
+      "content": "We need clarification on your data processing agreement before we can proceed. Our legal team has questions.",
+      "expected_action": "escalate_legal",
+      "escalate": true,
+      "escalation_reason": "legal_inquiry",
+      "category": "compliance"
+    },
+    {
+      "id": 11,
+      "channel": "web_form",
+      "customer_email": "developer@startup.com",
+      "subject": "Webhook not receiving events",
+      "content": "I set up a webhook endpoint but I'm not receiving any events. I've checked my server logs and nothing is coming through. My webhook URL is https://myapp.com/webhooks/techcorp",
+      "expected_action": "troubleshoot_webhook",
+      "escalate": false,
+      "category": "technical"
+    },
+    {
+      "id": 12,
+      "channel": "whatsapp",
+      "customer_phone": "+5566778899",
+      "content": "Thanks! That worked perfectly.",
+      "expected_action": "acknowledge_and_close",
+      "escalate": false,
+      "category": "general",
+      "sentiment_score": 0.9
+    },
+    {
+      "id": 13,
+      "channel": "email",
+      "customer_email": "cto@enterprise.com",
+      "subject": "Re: Previous conversation about API limits",
+      "content": "Following up on our conversation last week about increasing API rate limits. You mentioned someone would get back to me?",
+      "expected_action": "check_history_and_follow_up",
+      "escalate": false,
+      "category": "technical",
+      "requires_history": true
+    },
+    {
+      "id": 14,
+      "channel": "web_form",
+      "customer_email": "support@customer.com",
+      "subject": "",
+      "content": "",
+      "expected_action": "ask_for_clarification",
+      "escalate": false,
+      "category": "general",
+      "edge_case": "empty_message"
+    },
+    {
+      "id": 15,
+      "channel": "whatsapp",
+      "customer_phone": "+1234567890",
+      "content": "Can you tell me more about CompetitorX? I'm considering switching.",
+      "expected_action": "escalate_competitor_question",
+      "escalate": true,
+      "escalation_reason": "competitor_inquiry",
+      "category": "sales"
+    },
+    {
+      "id": 16,
+      "channel": "email",
+      "customer_email": "dev@company.com",
+      "subject": "OAuth2 flow not working",
+      "content": "I'm trying to implement OAuth2 but keep getting 'invalid_redirect_uri' error. I've added the redirect URI in the dashboard. What am I missing?",
+      "expected_action": "help_oauth_debugging",
+      "escalate": false,
+      "category": "technical"
+    },
+    {
+      "id": 17,
+      "channel": "web_form",
+      "customer_email": "qa@testing.com",
+      "subject": "Bug: Dashboard shows wrong request count",
+      "content": "The analytics dashboard is showing 1000 requests but our logs show 1500. There seems to be a discrepancy. Screenshot attached.",
+      "expected_action": "escalate_bug_report",
+      "escalate": true,
+      "escalation_reason": "bug_report",
+      "category": "bug_report"
+    },
+    {
+      "id": 18,
+      "channel": "whatsapp",
+      "customer_phone": "+9988776655",
+      "content": "How do I add team members to my account?",
+      "expected_action": "guide_team_management",
+      "escalate": false,
+      "category": "general"
+    },
+    {
+      "id": 19,
+      "channel": "email",
+      "customer_email": "security@company.com",
+      "subject": "Security compliance questions",
+      "content": "Are you SOC 2 compliant? We need this information for our vendor assessment.",
+      "expected_action": "provide_security_info_or_escalate",
+      "escalate": false,
+      "category": "compliance"
+    },
+    {
+      "id": 20,
+      "channel": "web_form",
+      "customer_email": "mobile@devteam.com",
+      "subject": "SDK for React Native?",
+      "content": "Do you have an SDK for React Native? I only see JavaScript and Python SDKs in the docs.",
+      "expected_action": "check_knowledge_base",
+      "escalate": false,
+      "category": "technical"
+    }
+  ],
+  "test_scenarios": [
+    {
+      "name": "Cross-channel continuity",
+      "description": "Customer starts on WhatsApp, continues on email",
+      "steps": [
+        {"channel": "whatsapp", "content": "Having trouble with API auth"},
+        {"channel": "email", "customer_email": "same@user.com", "content": "Following up on my WhatsApp conversation about API auth"}
+      ],
+      "expected": "Agent should link conversations"
+    },
+    {
+      "name": "Escalation then resolution",
+      "description": "Customer escalates, then issue gets resolved",
+      "steps": [
+        {"channel": "email", "content": "I want a refund!"},
+        {"channel": "email", "content": "Actually, I figured it out. Thanks!"}
+      ],
+      "expected": "Agent should de-escalate and close ticket"
+    },
+    {
+      "name": "Multi-question conversation",
+      "description": "Customer asks multiple questions in one thread",
+      "steps": [
+        {"channel": "whatsapp", "content": "How do I reset my password?"},
+        {"channel": "whatsapp", "content": "Also, how do I add team members?"},
+        {"channel": "whatsapp", "content": "One more thing - what are the rate limits?"}
+      ],
+      "expected": "Agent should answer all questions in context"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+# Customer Success FTE - Monitoring (ServiceMonitor for Prometheus)
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: customer-success-monitor
+  namespace: customer-success
+  labels:
+    app: customer-success-fte
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: customer-success-fte
+  namespaceSelector:
+    matchNames:
+      - customer-success
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
+---
+# Prometheus Rules (Alerts)
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: customer-success-alerts
+  namespace: customer-success
+  labels:
+    app: customer-success-fte
+    release: prometheus
+spec:
+  groups:
+    - name: customer-success.rules
+      rules:
+        # High error rate
+        - alert: CustomerSuccessHighErrorRate
+          expr: |
+            sum(rate(http_requests_total{namespace="customer-success",status=~"5.."}[5m]))
+            / sum(rate(http_requests_total{namespace="customer-success"}[5m])) > 0.05
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "High error rate in Customer Success API"
+            description: "Error rate is {{ $value | humanizePercentage }} (threshold: 5%)"
+
+        # High latency
+        - alert: CustomerSuccessHighLatency
+          expr: |
+            histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{namespace="customer-success"}[5m])) by (le)) > 2
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High latency in Customer Success API"
+            description: "P95 latency is {{ $value | humanizeDuration }} (threshold: 2s)"
+
+        # Pod not ready
+        - alert: CustomerSuccessPodNotReady
+          expr: |
+            kube_pod_status_ready{namespace="customer-success",condition="true"} == 0
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Customer Success pod not ready"
+            description: "Pod {{ $labels.pod }} has been not ready for 5 minutes"
+
+        # Kafka consumer lag (if using Kafka exporter)
+        - alert: CustomerSuccessKafkaLag
+          expr: |
+            kafka_consumer_group_lag{consumergroup="customer-success-worker"} > 1000
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High Kafka consumer lag"
+            description: "Consumer lag is {{ $value }} messages"
+
+        # Database connection pool exhausted
+        - alert: CustomerSuccessDBPoolExhausted
+          expr: |
+            db_pool_available{app="customer-success-fte"} < 2
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Database connection pool nearly exhausted"
+            description: "Only {{ $value }} connections available"

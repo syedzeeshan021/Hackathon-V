@@ -1,0 +1,42 @@
+# Customer Success FTE - Kubernetes ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: customer-success-config
+  namespace: customer-success
+  labels:
+    app: customer-success-fte
+data:
+  # Application
+  ENVIRONMENT: "production"
+  LOG_LEVEL: "INFO"
+  APP_NAME: "Customer Success FTE"
+
+  # Database
+  DB_HOST: "postgres-service"
+  DB_PORT: "5432"
+  DB_NAME: "customer_success"
+  DB_USER: "postgres"
+  DB_MIN_CONNECTIONS: "5"
+  DB_MAX_CONNECTIONS: "20"
+
+  # Kafka
+  KAFKA_BOOTSTRAP_SERVERS: "kafka-service:9092"
+  KAFKA_TOPIC_PREFIX: "customer_success"
+
+  # Channel Settings
+  GMAIL_ENABLED: "true"
+  WHATSAPP_ENABLED: "true"
+  WEB_FORM_ENABLED: "true"
+
+  # Agent Settings
+  AGENT_MAX_ITERATIONS: "10"
+  AGENT_TOOL_TIMEOUT: "30"
+
+  # Rate Limiting
+  RATE_LIMIT_ENABLED: "true"
+  RATE_LIMIT_PER_MINUTE: "60"
+
+  # Metrics
+  METRICS_ENABLED: "true"
+  METRICS_EXPORT_INTERVAL: "60"

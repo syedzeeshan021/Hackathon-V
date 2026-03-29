@@ -1,0 +1,95 @@
+# Customer Success FTE - Python Dependencies
+# Hackathon 5: Customer Success Digital FTE
+
+# =============================================================================
+# CORE DEPENDENCIES
+# =============================================================================
+
+# MCP SDK - For prototype server
+mcp>=0.1.0
+
+# OpenAI Agents SDK - Agent framework (for production)
+openai-agents>=0.0.1
+
+# OpenAI - LLM API
+openai>=1.0.0
+
+# FastAPI - API framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# Pydantic - Data validation
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# =============================================================================
+# DATABASE
+# =============================================================================
+
+# PostgreSQL async driver
+asyncpg>=0.29.0
+psycopg2-binary>=2.9.9  # For migrations
+
+# pgvector - Vector similarity search
+pgvector>=0.2.4
+
+# =============================================================================
+# KAFKA
+# =============================================================================
+
+# Async Kafka client
+aiokafka>=0.9.0
+
+# =============================================================================
+# CHANNEL INTEGRATIONS
+# =============================================================================
+
+# Gmail API
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.1
+google-api-python-client>=2.107.0
+google-cloud-pubsub>=2.19.0
+
+# Twilio - WhatsApp API
+twilio>=8.10.0
+
+# =============================================================================
+# UTILITIES
+# =============================================================================
+
+# HTTP client
+httpx>=0.25.0
+aiohttp>=3.9.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Logging
+structlog>=23.2.0  # Structured logging
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+
+# =============================================================================
+# DEVELOPMENT
+# =============================================================================
+
+# Code quality
+ruff>=0.1.0
+mypy>=1.7.0
+
+# Debugging
+ipdb>=0.13.0
+
+# =============================================================================
+# KUBERNETES (for deployment)
+# =============================================================================
+
+# Kubernetes Python client
+kubernetes>=28.1.0
+
+# Helm charts (optional)
+helm>=0.0.1a1

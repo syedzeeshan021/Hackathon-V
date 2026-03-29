@@ -1,0 +1,97 @@
+# Customer Success FTE - Production Dependencies
+# OpenAI Agents SDK Implementation
+
+# =============================================================================
+# CORE DEPENDENCIES
+# =============================================================================
+
+# OpenAI Agents SDK
+openai-agents>=0.0.1
+
+# Pydantic for input validation
+pydantic>=2.0.0
+
+# =============================================================================
+# DATABASE
+# =============================================================================
+
+# PostgreSQL async driver
+asyncpg>=0.29.0
+
+# pgvector for semantic search
+pgvector>=0.2.0
+
+# SQLAlchemy ORM (optional)
+sqlalchemy>=2.0.0
+
+# =============================================================================
+# API & CHANNELS
+# =============================================================================
+
+# FastAPI for web endpoints
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Gmail API
+google-api-python-client>=2.0.0
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=1.0.0
+
+# Twilio WhatsApp API
+twilio>=8.0.0
+
+# HTTP client
+httpx>=0.26.0
+aiohttp>=3.9.0
+
+# =============================================================================
+# MESSAGING & EVENTS
+# =============================================================================
+
+# Kafka for event streaming
+confluent-kafka>=2.3.0
+aiokafka>=0.9.0
+
+# =============================================================================
+# OBSERVABILITY
+# =============================================================================
+
+# Logging
+structlog>=24.0.0
+
+# Metrics
+prometheus-client>=0.19.0
+
+# Tracing (optional)
+opentelemetry-api>=1.21.0
+opentelemetry-sdk>=1.21.0
+
+# =============================================================================
+# TESTING
+# =============================================================================
+
+# Test framework
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+
+# Coverage
+pytest-cov>=4.1.0
+
+# Mocking
+pytest-mock>=3.12.0
+
+# HTTP testing
+respx>=0.20.0
+
+# =============================================================================
+# UTILITIES
+# =============================================================================
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Date/time handling
+python-dateutil>=2.8.0
+
+# JSON schema validation
+jsonschema>=4.20.0
